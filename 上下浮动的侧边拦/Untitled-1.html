@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+	#div1
+	{
+		width:100px;
+		height:100px;
+		background-color:red;
+		position:absolute;
+		left:-100px;
+	}
+	#enjoy
+	{
+		width:20px;
+		height:60px;
+		line-height:15px;
+		color:#CF3;
+		position:absolute;
+		left:100px;
+		background-color:#C93;
+	}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>浮动侧边拦</title>
+<script type="text/javascript" language="javascript" src="heightmove.js"></script>
+<script type="text/javascript">
+	
+var timer1;
+function enjoymove(ispeed,itarget)
+{
+	var oDiv=document.getElementById("div1");
+	clearInterval(timer1);
+	
+	timer1=setInterval(function(){
+		if(itarget>=0)
+		{
+
+			if(oDiv.offsetLeft>=itarget)
+			{
+				clearInterval(timer1);
+			}
+			else
+			{
+				oDiv.style.left=oDiv.offsetLeft+ispeed+'px';	
+			}
+		}
+		else
+		{
+			
+			if(oDiv.offsetLeft<=itarget)
+			{
+				clearInterval(timer1);
+			}
+			else
+			{
+				oDiv.style.left=oDiv.offsetLeft+ispeed+'px';	
+			}
+		}
+		
+	},30);
+	
+};
+window.onload,window.onscroll=function()
+{
+	var oDiv=document.getElementById("div1");
+	
+	oDiv.onmouseover=function()
+	{
+		enjoymove(10,0);
+	}
+	oDiv.onmouseout=function()
+	{
+		enjoymove(-10,-100);
+	}
+	var oscroll=document.documentElement.scrollTop||document.body.scrollTop;
+	var ch=document.documentElement.clientHeight||document.body.clientHeight;
+	var itarget=oscroll+(ch-oDiv.offsetHeight)/2;
+	heightmove(oDiv,itarget);
+		
+};
+</script>
+</head>
+<body   style="height:2000px;">
+    <div id="div1">
+    <span id="enjoy">分享到</span>
+    </div>
+</body>
+</html>
