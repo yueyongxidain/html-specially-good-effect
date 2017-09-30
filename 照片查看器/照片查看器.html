@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+*
+{
+	margin:0;
+	padding:0;
+}
+ul
+{
+	border:10px solid #333;
+	position:relative;
+	padding:10px;
+	top:50px;
+	margin:auto;
+	width:360px;
+	height:auto;
+}
+li
+{
+	margin:10px;
+	list-style:none;
+	width:100px;
+	height:100px;
+	float:left;
+	background-color:#999;
+	z-index:1;
+}
+img
+{
+	width:100px;
+	height:100px;
+	margin:0;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>照片查看器</title>
+<script type="text/javascript" src="jsonmove.js"></script>
+<script type="text/javascript">
+window.onload=function()
+{
+	 var oUl=document.getElementById("ul1");
+	 var oLi=oUl.getElementsByTagName("li");
+	 var i=0;
+	 var zMax=2;
+	 var ol=oLi.length%3;
+	 var oh=parseInt(oLi.length/3);
+	 var ol= ol==0 ?(oh):(oh+1);
+	 oUl.style.height=ol*(oLi[0].offsetHeight+20)+'px';
+	  for(i=0;i<oLi.length;i++)
+	 {
+		oLi[i].style.left=oLi[i].offsetLeft+'px';
+		oLi[i].style.top=oLi[i].offsetTop+'px'; 
+	 }
+	 for(i=0;i<oLi.length;i++)
+	 {
+		 oLi[i].style.position='absolute';
+		 oLi[i].style.margin='0px';
+	}
+	 for(i=0;oLi.length;i++)
+	 {
+		 oLi[i].timer=null;
+		 oLi[i].onmouseover=function()
+		 {
+			 var oImg=this.getElementsByTagName("img")[0];
+			 this.style.zIndex=zMax++;
+			 starMove(oImg,{width:200,height:200,marginTop:-50,marginLeft:-50});
+		 }
+		 oLi[i].onmouseout=function()
+		 {
+			 var oImg=this.getElementsByTagName("img")[0];
+			 starMove(oImg,{width:100,height:100,marginTop:0,marginLeft:0});
+		};
+	 }
+};
+</script>
+</head>
+
+<body>
+<ul id="ul1">
+<li><img src="image/1.jpg" /></li>
+<li><img src="image/2.jpg" /></li>
+<li><img src="image/3.jpg" /></li>
+<li><img src="image/4.jpg" /></li>
+<li><img src="image/5.jpg" /></li>
+<li><img src="image/6.jpg" /></li>
+</ul>
+</body>
+</html>
