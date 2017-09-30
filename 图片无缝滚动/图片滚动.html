@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>图片无缝滚动</title>
+<style>
+	#all
+	{
+		position:relative;
+		display:block;
+		width:1400px;
+		height:256px;
+		margin:auto;
+}
+	#div1
+	{
+		position:relative;
+		left:0;
+		display:block;
+		overflow:hidden;
+		width:1200px;
+		height:256px;
+		margin:0 auto;
+	
+	}
+	ul
+	{
+		position:absolute;
+	 	left:0;
+		padding:0px;
+		margin:0 auto;
+	}
+  li
+  {
+	  width:340px;
+	  height:254px;
+	  float:left;
+	  margin:4px 0px 4px 8px;
+	  list-style:none;
+	  padding:0px;
+   }
+  #left
+  {
+	  position:absolute;
+	  top:50%;
+	  left:5%; 
+	 
+	}
+	#right
+  {
+	  position:absolute;
+	  right:5%; 
+	  top:50%;
+	}
+</style>
+<script type="text/javascript">
+	window.onload=function()
+	{
+		
+		var odiv=document.getElementById("div1");
+		var oul=odiv.getElementsByTagName("ul")[0];
+		var oa=document.getElementsByTagName("a");
+		var speed=-5;
+		oul.innerHTML+=oul.innerHTML;
+		var oli=oul.getElementsByTagName("li");
+		var timer=null;
+		oul.style.width=(oli[0].offsetWidth+8)*oli.length+'px';
+		timer=setInterval(function() {
+			
+			oul.style.left=oul.offsetLeft+speed+'px';
+				if(oul.offsetLeft<-oul.offsetWidth/2)
+				{
+					oul.style.left=0;	
+				}
+				else if(oul.offsetLeft>0)
+				{
+					oul.style.left=-(oul.offsetWidth/2)+'px';
+					//alert(oul.offsetLeft);	
+				}
+				},30);
+		oa[0].onclick=function()
+		{
+			speed=-5;	
+		}
+		oa[1].onclick=function ()
+		{
+			speed=5;	
+		}
+		oul.onmouseover=function()
+		{
+			clearInterval(timer);
+		}
+		oul.onmouseout=function()
+		{
+			timer=setInterval(function() {
+		
+			oul.style.left=oul.offsetLeft+speed+'px';
+			if(oul.offsetLeft<-oul.offsetWidth/2)
+			{
+				oul.style.left=0;	
+			}
+			else if(oul.offsetLeft>0)
+			{
+				oul.style.left=-(oul.offsetWidth/2)+'px';	
+			}
+			},30);
+		}
+	};
+</script>
+</head>
+<body>
+<div id="all">
+    <div id="div1">
+        <ul>
+            <li><img src="image/1.jpg" /></li>
+            <li><img src="image/2.jpg" /></li>
+            <li><img src="image/4.jpg" /></li>
+            <li><img src="image/3.jpg" /></li>
+        </ul>
+     </div>
+     <a href="javascript:void(0);"  id="left"><h1><</h1></a>
+     <a href="javascript:void(0);"  id="right" ><h1>></h1></a>
+ </div>
+</body>
+</html>
