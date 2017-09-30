@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* CSS Document */
+
+#star
+{
+	
+}
+#star>ul
+{
+	display:block;
+	list-style:none;
+}
+#star ul li
+{
+
+	margin:2px  4px 2px 2px;
+	background:url(../image/star.png) no-repeat;
+	float:left;
+	width:19px;
+	height:23px;
+}
+#star li.active
+{
+	margin:2px  4px 2px 2px;
+	background:url(../image/star.png) no-repeat;
+	float:left;
+	width:19px;
+	height:23px;
+	background-position:0 -27px;
+}
+#src>p
+{
+	display:block;
+	background-color:#CC3;
+}
