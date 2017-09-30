@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+*
+{
+	margin:0px;
+	padding:0px;
+}
+li
+{
+	list-style:none;
+}
+#div1
+{
+	width:100px;
+	height:50px;
+	background-color:#F00;
+	position:absolute;
+	left:0;
+	top:0;
+}
+#ul1
+{
+	position:relative;
+	width:400px;
+	height:30px;
+	background-color:#CCC;
+	margin:30px auto;
+}
+li
+{
+	text-align:center;
+	float:left;
+	width:98px;
+	height:28px;
+	line-height:28px;
+	border:1px solid #0C0;
+	z-index:2;
+}
+.bg
+{
+	width:100px;
+	height:5px;
+	overflow:hidden;
+	position:absolute;
+	left:0;
+	top:24px;
+	background-color:#C06;
+	border:none;
+	z-index:1;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+	window.onload=function()
+	{
+		var oUl=document.getElementById("ul1");
+		var oLi=oUl.getElementsByTagName("li");
+		var oBg=document.getElementById("bg");
+		oBg.timer=null;
+		var i=0;
+		for(i=0;i<oLi.length-1;i++)
+		{
+			oLi[i].index=i;
+			oLi[i].onclick=function()
+			{
+				var itarget=this.index*oLi[0].offsetWidth;
+				starMove(oBg,itarget);
+			};
+		}
+	};
+	var iSpeed=0;
+	function starMove(obj,itarget)
+	{
+		clearInterval(obj.timer);
+		obj.timer=setInterval(function(){
+			iSpeed+=(itarget-obj.offsetLeft)/4;
+			iSpeed*=0.7;
+			if(iSpeed==0&&Math.abs(obj.offsetLeft-iatrget))
+			{
+				clearInterval(obj.timer);
+				obj.style.left=itarget+'px';
+			}
+			else
+			{
+				obj.style.left=obj.offsetLeft+iSpeed+'px';
+			}
+		},30);
+	}
+</script>
+</head>
+
+<body>
+<ul id="ul1">
+	<li>首页</li>
+    <li>关于我们</li>
+    <li>企业业务</li>
+    <li>联系方式</li>
+    <li class="bg" id="bg"></li>
+    
+</ul>
+</body>
+</html>
