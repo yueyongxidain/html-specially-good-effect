@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> 
+<link rel="stylesheet" href="css/style.css" />
+<title>flash效果幻灯片</title>
+<script type="text/javascript" language="javascript" src="javascript/move.js"></script>
+<script type="text/javascript" language="javascript" src="javascript/flashmove.js"></script>
+</head>
+<body>
+  <div  id="play" class="play">
+       <div class="big_pic" id="big">
+       <div class="make_prevouse" id="make_prevouse"></div>
+       <div class="make_next" id="make_next"></div>
+       <ul>
+       <li style="z-index:1;"><img src="image/1.jpg" /></li>
+       <li><img src="image/2.jpg" /></li>
+       <li><img src="image/3.jpg" /></li>
+       <li><img src="image/4.jpg" /></li>
+       <li><img src="image/5.jpg" /></li>
+       <li><img src="image/6.jpg" /></li>
+       </ul>
+       <a class="prevouse" href="javascript:void(0);"></a>
+       <a class="next" href="javascript:void(0);"></a>
+       </div>
+       <div class="small_pic" id="small">
+       	<ul>
+           <li style="filter:alpha(opacity:100);opacity:1;"><img src="image/1.jpg" /></li>
+           <li><img src="image/2.jpg" /></li>
+           <li><img src="image/3.jpg" /></li>
+           <li><img src="image/4.jpg" /></li>
+           <li><img src="image/5.jpg"  /></li>
+      	   <li><img src="image/6.jpg" /></li>
+        </ul>
+       </div>
+  </div>
+</body>
+</html>
